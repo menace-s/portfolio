@@ -32,6 +32,7 @@ export const navItems = [
 ] as const;
 
 export const hero = {
+  badge: `${siteConfig.role.toUpperCase()} · ${siteConfig.location.toUpperCase()}`,
   title: "Je construis des applications web et j’automatise leur qualité.",
   subtitle: "Développement Web · Test Automatisé · RPA · DevOps",
   primaryCta: { label: "Voir mes projets", href: "#projets" },
