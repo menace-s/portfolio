@@ -23,13 +23,13 @@ export function Hero() {
           <div className="flex flex-col gap-4 pt-4 sm:flex-row">
             <a
               href={hero.primaryCta.href}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary-container px-8 py-4 text-center font-bold text-on-primary-container transition-opacity hover:opacity-90"
+              className="inline-flex items-center justify-center gap-2 rounded-control bg-primary-container px-8 py-4 text-center font-bold text-on-primary-container transition-opacity hover:opacity-90"
             >
               {hero.primaryCta.label} <ArrowRight className="h-4 w-4" />
             </a>
             <a
               href={hero.secondaryCta.href}
-              className="glass-panel inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-center font-bold text-on-surface transition-colors hover:bg-on-surface/5"
+              className="glass-panel inline-flex items-center justify-center gap-2 rounded-control px-8 py-4 text-center font-bold text-on-surface transition-colors hover:bg-on-surface/5"
             >
               {hero.secondaryCta.label} <Mail className="h-4 w-4" />
             </a>

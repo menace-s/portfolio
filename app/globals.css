@@ -162,6 +162,10 @@
    Tailwind v4 pairs a --text-* size with its --text-*--line-height /
    --letter-spacing / --font-weight companions automatically. */
 @theme {
+  /* Shared corner radius for the nav shell and solid buttons — deliberately
+     less rounded than Tailwind's `rounded-full` pill, per design feedback. */
+  --radius-control: 10px;
+
   --text-headline-xl: 64px;
   --text-headline-xl--line-height: 1.1;
   --text-headline-xl--letter-spacing: -0.04em;
