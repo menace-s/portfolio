@@ -2,49 +2,45 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-/* Enables `dark:` variants driven by a `.dark` class on <html>
-   (toggled by ThemeProvider) instead of only `prefers-color-scheme`. */
-@custom-variant dark (&:where(.dark, .dark *));
-
 /*
-  Design tokens — derived from DESIGN.md ("High-Contrast Tech Light")
-  and the Stitch-generated dark screen ("Portfolio Home / Modern Yellow").
-  Light values live on :root, dark values override them under .dark.
+  Design tokens — sober/professional palette: warm off-white neutrals
+  (close to Tailwind's "stone" scale) with a navy-blue accent, replacing
+  the earlier high-contrast yellow scheme. Light only — no dark mode.
 */
 :root {
-  --background: #f9f9f9;
-  --on-background: #1a1c1c;
+  --background: #fbfbf9;
+  --on-background: #1c1917;
 
-  --surface: #f9f9f9;
-  --surface-dim: #dadada;
-  --surface-bright: #f9f9f9;
+  --surface: #f4f3ee;
+  --surface-dim: #ece9e2;
+  --surface-bright: #fbfbf9;
   --surface-container-lowest: #ffffff;
-  --surface-container-low: #f3f3f3;
-  --surface-container: #f0f0f0;
-  --surface-container-high: #e8e8e8;
-  --surface-container-highest: #e2e2e2;
-  --surface-variant: #e2e2e2;
+  --surface-container-low: #f7f6f0;
+  --surface-container: #f2efea;
+  --surface-container-high: #ece8e1;
+  --surface-container-highest: #e5e2da;
+  --surface-variant: #ece8e1;
 
-  --on-surface: #1a1c1c;
-  --on-surface-variant: #4c4732;
-  --on-surface-muted: #666666;
+  --on-surface: #1c1917;
+  --on-surface-variant: #6b6661;
+  --on-surface-muted: #6b6661;
 
-  --outline: #7d775f;
-  --outline-variant: #cec6ab;
+  --outline: #a39d94;
+  --outline-variant: #e5e2da;
 
   /* Nothing in this codebase reads bare --primary/--secondary directly
      (everything uses -container/on- variants below) except the shadcn
      Button, added below — so these double as its brand-color input:
-     yellow accent for "default", a quiet neutral for "secondary". */
+     black accent for "default", a quiet neutral for "secondary". */
   --primary: var(--primary-container);
   --on-primary: #ffffff;
-  --primary-container: #ffe000;
-  --on-primary-container: #716300;
+  --primary-container: #1c1917;
+  --on-primary-container: #ffffff;
 
-  --secondary: var(--surface-container-high);
+  --secondary: #4a4542;
   --on-secondary: #ffffff;
-  --secondary-container: #e5e2e1;
-  --on-secondary-container: #656464;
+  --secondary-container: #ece8e1;
+  --on-secondary-container: #4a4542;
 
   --tertiary: #00696c;
   --on-tertiary: #ffffff;
@@ -58,11 +54,11 @@
 
   --inverse-surface: #2f3131;
   --inverse-on-surface: #f1f1f1;
-  --inverse-primary: #e2c600;
+  --inverse-primary: #7ba0dd;
 
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-blur: 20px;
-  --dot-color: rgba(20, 18, 0, 0.06);
+  --dot-color: rgba(28, 25, 23, 0.05);
 
   /*
    * shadcn/ui semantic layer, wired to the tokens above instead of its
@@ -75,7 +71,7 @@
   --card-foreground: var(--on-surface);
   --popover: var(--surface-container);
   --popover-foreground: var(--on-surface);
-  /* Button "default" variant = our brand yellow, not shadcn's near-black. */
+  /* Button "default" variant = our brand navy, not shadcn's near-black. */
   --primary-foreground: var(--on-primary-container);
   --secondary-foreground: var(--on-surface);
   --muted: var(--surface-container-high);
@@ -102,85 +98,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-}
-
-.dark {
-  --background: #131313;
-  --on-background: #e2e2e2;
-
-  --surface: #131313;
-  --surface-dim: #131313;
-  --surface-bright: #393939;
-  --surface-container-lowest: #0e0e0e;
-  --surface-container-low: #1b1b1b;
-  --surface-container: #1f1f1f;
-  --surface-container-high: #2a2a2a;
-  --surface-container-highest: #353535;
-  --surface-variant: #353535;
-
-  --on-surface: #e2e2e2;
-  --on-surface-variant: #cec6ab;
-  --on-surface-muted: #a1a1a1;
-
-  --outline: #979177;
-  --outline-variant: #4c4732;
-
-  --primary: var(--primary-container);
-  --on-primary: #383000;
-  --primary-container: #ffe000;
-  --on-primary-container: #716300;
-
-  --secondary: var(--surface-container-high);
-  --on-secondary: #2f3131;
-  --secondary-container: #454747;
-  --on-secondary-container: #b4b5b5;
-
-  --tertiary: #f6feff;
-  --on-tertiary: #313030;
-  --tertiary-container: #e2dfde;
-  --on-tertiary-container: #636262;
-
-  --error: #ffb4ab;
-  --on-error: #690005;
-  --error-container: #93000a;
-  --on-error-container: #ffdad6;
-
-  --inverse-surface: #e2e2e2;
-  --inverse-on-surface: #303030;
-  --inverse-primary: #6c5e00;
-
-  --glass-bg: rgba(26, 27, 34, 0.7);
-  --glass-blur: 12px;
-  --dot-color: rgba(255, 255, 255, 0.05);
-
-  --foreground: var(--on-background);
-  --card: var(--surface-container);
-  --card-foreground: var(--on-surface);
-  --popover: var(--surface-container);
-  --popover-foreground: var(--on-surface);
-  --primary-foreground: var(--on-primary-container);
-  --secondary-foreground: var(--on-surface);
-  --muted: var(--surface-container-high);
-  --muted-foreground: var(--on-surface-variant);
-  --accent: var(--surface-bright);
-  --accent-foreground: var(--on-surface);
-  --destructive: var(--error);
-  --border: var(--outline-variant);
-  --input: var(--outline-variant);
-  --ring: var(--primary-container);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @theme inline {
@@ -354,34 +271,6 @@ body {
 .glow-hover:hover {
   box-shadow: 0 0 20px 0 color-mix(in oklab, var(--color-primary-container) 25%, transparent);
   border-color: var(--color-primary-container);
-}
-
-/*
- * Primary action buttons: dashed outline + a faint diagonal-hatch wash
- * instead of a solid saturated fill — a "marked-for-attention" sticker
- * treatment, on-brand (yellow) but deliberately quiet. Border/text use
- * on-surface so contrast holds in both themes (a yellow border on a
- * pale yellow wash would nearly vanish in light mode).
- */
-.btn-accent {
-  /* Dash length/gap aren't independently controllable in CSS — the browser
-     scales both roughly with border-width, so a touch thicker = more air
-     between dashes without switching to an SVG/gradient border hack. */
-  border: 1px dashed var(--color-on-surface);
-  color: var(--color-on-surface);
-  background-color: color-mix(in oklab, var(--color-primary-container) 10%, transparent);
-  background-image: repeating-linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--color-primary-container) 22%, transparent) 0 3px,
-    transparent 3px 10px
-  );
-  transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
-}
-.btn-accent:hover {
-  border-color: var(--color-primary-container);
-  background-color: color-mix(in oklab, var(--color-primary-container) 16%, transparent);
 }
 
 @layer base {

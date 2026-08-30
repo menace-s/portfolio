@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex-grow pb-32 pt-40">
+      <main className="flex-grow pb-32">
         <Hero />
         <Expertise />
         <Projects />
