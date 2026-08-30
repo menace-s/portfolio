@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
 /* Enables `dark:` variants driven by a `.dark` class on <html>
    (toggled by ThemeProvider) instead of only `prefers-color-scheme`. */
@@ -30,12 +32,16 @@
   --outline: #7d775f;
   --outline-variant: #cec6ab;
 
-  --primary: #6c5e00;
+  /* Nothing in this codebase reads bare --primary/--secondary directly
+     (everything uses -container/on- variants below) except the shadcn
+     Button, added below — so these double as its brand-color input:
+     yellow accent for "default", a quiet neutral for "secondary". */
+  --primary: var(--primary-container);
   --on-primary: #ffffff;
   --primary-container: #ffe000;
   --on-primary-container: #716300;
 
-  --secondary: #5f5e5e;
+  --secondary: var(--surface-container-high);
   --on-secondary: #ffffff;
   --secondary-container: #e5e2e1;
   --on-secondary-container: #656464;
@@ -57,6 +63,45 @@
   --glass-bg: rgba(255, 255, 255, 0.8);
   --glass-blur: 20px;
   --dot-color: rgba(20, 18, 0, 0.06);
+
+  /*
+   * shadcn/ui semantic layer, wired to the tokens above instead of its
+   * own generic near-black/near-white defaults — so components pulled
+   * from the registry (Button, Card, Dialog, …) inherit this site's
+   * palette automatically rather than introducing a second one.
+   */
+  --foreground: var(--on-background);
+  --card: var(--surface-container);
+  --card-foreground: var(--on-surface);
+  --popover: var(--surface-container);
+  --popover-foreground: var(--on-surface);
+  /* Button "default" variant = our brand yellow, not shadcn's near-black. */
+  --primary-foreground: var(--on-primary-container);
+  --secondary-foreground: var(--on-surface);
+  --muted: var(--surface-container-high);
+  --muted-foreground: var(--on-surface-variant);
+  --accent: var(--surface-bright);
+  --accent-foreground: var(--on-surface);
+  --destructive: var(--error);
+  --border: var(--outline-variant);
+  --input: var(--outline-variant);
+  --ring: var(--primary-container);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  /* Matches --radius-control so shadcn components' rounded-* utilities
+     (derived from this) align with the nav/buttons elsewhere on the site. */
+  --radius: 5px;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 .dark {
@@ -80,12 +125,12 @@
   --outline: #979177;
   --outline-variant: #4c4732;
 
-  --primary: #fffcff;
+  --primary: var(--primary-container);
   --on-primary: #383000;
   --primary-container: #ffe000;
   --on-primary-container: #716300;
 
-  --secondary: #c6c6c7;
+  --secondary: var(--surface-container-high);
   --on-secondary: #2f3131;
   --secondary-container: #454747;
   --on-secondary-container: #b4b5b5;
@@ -107,6 +152,35 @@
   --glass-bg: rgba(26, 27, 34, 0.7);
   --glass-blur: 12px;
   --dot-color: rgba(255, 255, 255, 0.05);
+
+  --foreground: var(--on-background);
+  --card: var(--surface-container);
+  --card-foreground: var(--on-surface);
+  --popover: var(--surface-container);
+  --popover-foreground: var(--on-surface);
+  --primary-foreground: var(--on-primary-container);
+  --secondary-foreground: var(--on-surface);
+  --muted: var(--surface-container-high);
+  --muted-foreground: var(--on-surface-variant);
+  --accent: var(--surface-bright);
+  --accent-foreground: var(--on-surface);
+  --destructive: var(--error);
+  --border: var(--outline-variant);
+  --input: var(--outline-variant);
+  --ring: var(--primary-container);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
 }
 
 @theme inline {
@@ -156,6 +230,42 @@
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
 /* Typography scale from DESIGN.md — used as `text-headline-xl`, etc.
@@ -164,7 +274,7 @@
 @theme {
   /* Shared corner radius for the nav shell and solid buttons — deliberately
      less rounded than Tailwind's `rounded-full` pill, per design feedback. */
-  --radius-control: 10px;
+  --radius-control: 5px;
 
   --text-headline-xl: 64px;
   --text-headline-xl--line-height: 1.1;
@@ -217,6 +327,17 @@ body {
   background-position: -19px -19px;
 }
 
+/* Graph-paper hairline grid — same module size as .bg-dot-grid and the same
+   theme-aware tint, but full crossing lines instead of dots. Reserved for
+   the Hero so it reads as a distinct "blueprint" surface under the thesis
+   statement rather than competing with the dotted canvas everywhere else. */
+.bg-grid-lines {
+  background-image:
+    linear-gradient(90deg, var(--dot-color) 1px, transparent 1px),
+    linear-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 60px 40px;
+}
+
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
@@ -233,4 +354,44 @@ body {
 .glow-hover:hover {
   box-shadow: 0 0 20px 0 color-mix(in oklab, var(--color-primary-container) 25%, transparent);
   border-color: var(--color-primary-container);
+}
+
+/*
+ * Primary action buttons: dashed outline + a faint diagonal-hatch wash
+ * instead of a solid saturated fill — a "marked-for-attention" sticker
+ * treatment, on-brand (yellow) but deliberately quiet. Border/text use
+ * on-surface so contrast holds in both themes (a yellow border on a
+ * pale yellow wash would nearly vanish in light mode).
+ */
+.btn-accent {
+  /* Dash length/gap aren't independently controllable in CSS — the browser
+     scales both roughly with border-width, so a touch thicker = more air
+     between dashes without switching to an SVG/gradient border hack. */
+  border: 1px dashed var(--color-on-surface);
+  color: var(--color-on-surface);
+  background-color: color-mix(in oklab, var(--color-primary-container) 10%, transparent);
+  background-image: repeating-linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--color-primary-container) 22%, transparent) 0 3px,
+    transparent 3px 10px
+  );
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+.btn-accent:hover {
+  border-color: var(--color-primary-container);
+  background-color: color-mix(in oklab, var(--color-primary-container) 16%, transparent);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

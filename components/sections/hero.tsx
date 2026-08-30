@@ -1,11 +1,14 @@
 import { ArrowRight, Mail, TerminalSquare } from "lucide-react";
+import { Button } from "../ui/button";
 import { Container } from "../layout/container";
+import { BackgroundBeams } from "../ui/background-beams";
 import { hero, links } from "@/lib/site-config";
 
 export function Hero() {
   return (
-    <section className="relative flex flex-col items-center gap-12 py-12 md:flex-row md:py-24">
-      <Container className="flex flex-col items-center gap-12 md:flex-row">
+    <section className="relative flex flex-col items-center gap-12 overflow-hidden bg-background py-12 md:flex-row md:py-24">
+      <BackgroundBeams />
+      <Container className="relative flex flex-col items-center gap-12 md:flex-row">
         <div className="z-10 flex-1 space-y-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-outline-variant/50 px-5 py-2 text-label-mono text-primary-container">
             <span className="h-2 w-2 animate-pulse rounded-full bg-primary-container" />
@@ -21,18 +24,27 @@ export function Hero() {
           </p>
 
           <div className="flex flex-col gap-4 pt-4 sm:flex-row">
-            <a
-              href={hero.primaryCta.href}
-              className="inline-flex items-center justify-center gap-2 rounded-control bg-primary-container px-8 py-4 text-center font-bold text-on-primary-container transition-opacity hover:opacity-90"
-            >
-              {hero.primaryCta.label} <ArrowRight className="h-4 w-4" />
-            </a>
-            <a
-              href={hero.secondaryCta.href}
-              className="glass-panel inline-flex items-center justify-center gap-2 rounded-control px-8 py-4 text-center font-bold text-on-surface transition-colors hover:bg-on-surface/5"
-            >
-              {hero.secondaryCta.label} <Mail className="h-4 w-4" />
-            </a>
+            <Button
+              size="lg"
+              nativeButton={false}
+              className="h-13 rounded-control px-8 text-base"
+              render={
+                <a href={hero.primaryCta.href}>
+                  {hero.primaryCta.label} <ArrowRight className="h-4 w-4" />
+                </a>
+              }
+            />
+            <Button
+              variant="outline"
+              size="lg"
+              nativeButton={false}
+              className="h-13 rounded-control border-outline-variant/50 bg-transparent px-8 text-base text-on-surface hover:bg-on-surface/5"
+              render={
+                <a href={hero.secondaryCta.href}>
+                  {hero.secondaryCta.label} <Mail className="h-4 w-4" />
+                </a>
+              }
+            />
           </div>
 
           <div className="flex gap-6 pt-8 text-label-mono text-on-surface-variant">

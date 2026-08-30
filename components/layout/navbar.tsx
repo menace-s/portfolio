@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { Button } from "../ui/button";
 import { ThemeToggle } from "../theme/theme-toggle";
 import { links, navItems, siteConfig } from "@/lib/site-config";
 
@@ -50,12 +51,11 @@ export function Navbar() {
 
             <div className="flex items-center gap-3">
               <ThemeToggle />
-              <a
-                href={links.cv}
-                className="hidden items-center justify-center gap-2 rounded-control bg-primary-container px-6 py-2 font-bold text-on-primary-container transition-opacity hover:opacity-90 md:flex"
-              >
-                Télécharger CV
-              </a>
+              <Button
+                nativeButton={false}
+                className="hidden rounded-control md:flex"
+                render={<a href={links.cv}>Télécharger CV</a>}
+              />
               <button
                 type="button"
                 onClick={() => setIsOpen((v) => !v)}
@@ -80,13 +80,16 @@ export function Navbar() {
                   {item.label}
                 </a>
               ))}
-              <a
-                href={links.cv}
-                onClick={closeMenu}
-                className="mt-2 flex items-center justify-center rounded-control bg-primary-container px-6 py-3 font-bold text-on-primary-container"
-              >
-                Télécharger CV
-              </a>
+              <Button
+                size="lg"
+                nativeButton={false}
+                className="mt-2 h-12 w-full rounded-control text-base"
+                render={
+                  <a href={links.cv} onClick={closeMenu}>
+                    Télécharger CV
+                  </a>
+                }
+              />
             </div>
           )}
         </nav>
