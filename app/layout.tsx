@@ -35,15 +35,21 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
+<<<<<<< HEAD
   title: siteConfig.title,
   description: siteConfig.description,
+=======
+  icons: {
+    icon: "/JP.png",
+  },
+>>>>>>> 479e08b (feat: update layout and sections with new scroll behavior; add new icon and image)
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="fr"
-      className={`${geistSans.variable} ${jetbrainsMono.variable} ${poppins.variable} ${instrumentSerif.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${jetbrainsMono.variable} ${poppins.variable} ${instrumentSerif.variable} h-full scroll-smooth antialiased`}
     >
       <body className="bg-dot-grid flex min-h-full flex-col overflow-x-hidden bg-background text-on-background">
         {children}

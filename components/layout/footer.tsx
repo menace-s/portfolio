@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer
       id="contact"
-      className="w-full border-t border-outline-variant/30 bg-surface-container-lowest py-12"
+      className="w-full scroll-mt-24 border-t border-outline-variant/30 bg-surface-container-lowest py-12 md:scroll-mt-28"
     >
       <Container className="flex flex-col items-center justify-between gap-8 md:flex-row">
         <div>

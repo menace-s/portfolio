@@ -13,9 +13,11 @@ export function Hero() {
             <p className="text-label-mono text-on-surface-variant">
               {hero.greeting}
             </p>
-            <h1 className="font-heading-rounded text-headline-xl-mobile text-on-surface md:text-headline-xl">
-              <span className="font-normal">{siteConfig.name},</span>{" "}
-              <span className="block font-serif-accent font-bold text-indigo-800 italic">
+            <h1 className="font-heading-rounded text-on-surface">
+              <span className="text-headline-xl-mobile font-normal md:text-headline-xl">
+                {siteConfig.name},
+              </span>{" "}
+              <span className="block font-serif-accent text-[56px] leading-[1.05] font-bold text-indigo-800 italic md:text-[104px] md:leading-[1.05]">
                 {hero.role}
               </span>
             </h1>
@@ -36,7 +38,7 @@ export function Hero() {
               variant="outline"
               size="lg"
               nativeButton={false}
-              className="h-11 rounded-control border-outline-variant/50 bg-transparent px-6 text-sm text-on-surface hover:bg-on-surface/5"
+              className="h-11 rounded-control border-outline-variant/50 bg-transparent px-6 text-sm text-on-surface"
               render={<a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>}
             />
           </div>

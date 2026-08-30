@@ -13,7 +13,7 @@ export function Expertise() {
   return (
     <section
       id="expertise"
-      className="border-t border-outline-variant/30 py-24 md:py-32"
+      className="scroll-mt-24 border-t border-outline-variant/30 py-24 md:py-32 md:scroll-mt-28"
     >
       <Container>
         <h2 className="mb-16 text-headline-lg-mobile text-on-surface md:text-headline-lg">

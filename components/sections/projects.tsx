@@ -36,7 +36,7 @@ export function Projects() {
   return (
     <section
       id="projets"
-      className="border-t border-outline-variant/30 py-24 md:py-32"
+      className="scroll-mt-24 border-t border-outline-variant/30 py-24 md:py-32 md:scroll-mt-28"
     >
       <Container>
         <div className="mb-16">

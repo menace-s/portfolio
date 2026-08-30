@@ -25,10 +25,9 @@ export const links = {
 };
 
 export const navItems = [
-  { label: "Expertise", href: "#expertise" },
+  { label: "À propos", href: "#parcours" },
   { label: "Projets", href: "#projets" },
-  { label: "Parcours", href: "#parcours" },
-  { label: "Contact", href: "#contact" },
+  { label: "Stack technique", href: "#expertise" },
 ] as const;
 
 export const hero = {
