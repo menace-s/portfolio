@@ -32,7 +32,8 @@ export const navItems = [
 ] as const;
 
 export const hero = {
-  title: "Je construis des applications web et j’automatise leur qualité.",
+  greeting: "Bonjour, je suis",
+  role: siteConfig.role,
   subtitle: "Développement Web · Test Automatisé · RPA · DevOps",
   primaryCta: { label: "Voir mes projets", href: "#projets" },
   secondaryCta: { label: "Me contacter", href: "#contact" },

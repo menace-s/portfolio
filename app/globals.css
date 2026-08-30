@@ -150,6 +150,11 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-jetbrains-mono);
   --font-heading: var(--font-sans);
+  /* Rounded, friendly geometric sans reserved for the Hero headline —
+     used as `font-heading-rounded`. Everything else keeps --font-heading. */
+  --font-heading-rounded: var(--font-poppins);
+  /* Serif accent for the Hero role line only — used as `font-serif-accent`. */
+  --font-serif-accent: var(--font-instrument-serif);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -195,10 +200,18 @@
      less rounded than Tailwind's `rounded-full` pill, per design feedback. */
   --radius-control: 5px;
 
-  --text-headline-xl: 64px;
+  --text-headline-xl: 80px;
   --text-headline-xl--line-height: 1.1;
   --text-headline-xl--letter-spacing: -0.04em;
   --text-headline-xl--font-weight: 800;
+
+  /* Hero-only mobile size — deliberately separate from
+     --text-headline-lg-mobile so bumping it doesn't also grow the h2s
+     that share that token across the other sections. */
+  --text-headline-xl-mobile: 44px;
+  --text-headline-xl-mobile--line-height: 1.15;
+  --text-headline-xl-mobile--letter-spacing: -0.03em;
+  --text-headline-xl-mobile--font-weight: 800;
 
   --text-headline-lg: 40px;
   --text-headline-lg--line-height: 1.2;

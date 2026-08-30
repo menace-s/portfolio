@@ -9,9 +9,17 @@ export function Hero() {
       <div className="bg-pattern-randomized pointer-events-none absolute inset-0 opacity-25" aria-hidden="true" />
       <Container className="relative flex flex-col items-center gap-12 md:flex-row">
         <div className="z-10 flex-1 space-y-8">
-          <h1 className="text-headline-lg-mobile text-on-surface md:text-headline-xl">
-            {hero.title}
-          </h1>
+          <div className="space-y-2">
+            <p className="text-label-mono text-on-surface-variant">
+              {hero.greeting}
+            </p>
+            <h1 className="font-heading-rounded text-headline-xl-mobile text-on-surface md:text-headline-xl">
+              <span className="font-normal">{siteConfig.name},</span>{" "}
+              <span className="block font-serif-accent font-bold text-indigo-800 italic">
+                {hero.role}
+              </span>
+            </h1>
+          </div>
 
           <p className="max-w-2xl text-label-mono text-on-surface-variant">
             {hero.subtitle}
