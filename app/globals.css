@@ -1,26 +1,297 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
+/*
+  Design tokens — sober/professional palette: warm off-white neutrals
+  (close to Tailwind's "stone" scale) with a navy-blue accent, replacing
+  the earlier high-contrast yellow scheme. Light only — no dark mode.
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fbfbf9;
+  --on-background: #1c1917;
+
+  --surface: #f4f3ee;
+  --surface-dim: #ece9e2;
+  --surface-bright: #fbfbf9;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f7f6f0;
+  --surface-container: #f2efea;
+  --surface-container-high: #ece8e1;
+  --surface-container-highest: #e5e2da;
+  --surface-variant: #ece8e1;
+
+  --on-surface: #1c1917;
+  --on-surface-variant: #6b6661;
+  --on-surface-muted: #6b6661;
+
+  --outline: #a39d94;
+  --outline-variant: #e5e2da;
+
+  /* Nothing in this codebase reads bare --primary/--secondary directly
+     (everything uses -container/on- variants below) except the shadcn
+     Button, added below — so these double as its brand-color input:
+     black accent for "default", a quiet neutral for "secondary". */
+  --primary: var(--primary-container);
+  --on-primary: #ffffff;
+  --primary-container: #1c1917;
+  --on-primary-container: #ffffff;
+
+  --secondary: #4a4542;
+  --on-secondary: #ffffff;
+  --secondary-container: #ece8e1;
+  --on-secondary-container: #4a4542;
+
+  --tertiary: #00696c;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #13f8ff;
+  --on-tertiary-container: #006e72;
+
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #93000a;
+
+  --inverse-surface: #2f3131;
+  --inverse-on-surface: #f1f1f1;
+  --inverse-primary: #7ba0dd;
+
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-blur: 20px;
+  --dot-color: rgba(28, 25, 23, 0.05);
+
+  /*
+   * shadcn/ui semantic layer, wired to the tokens above instead of its
+   * own generic near-black/near-white defaults — so components pulled
+   * from the registry (Button, Card, Dialog, …) inherit this site's
+   * palette automatically rather than introducing a second one.
+   */
+  --foreground: var(--on-background);
+  --card: var(--surface-container);
+  --card-foreground: var(--on-surface);
+  --popover: var(--surface-container);
+  --popover-foreground: var(--on-surface);
+  /* Button "default" variant = our brand navy, not shadcn's near-black. */
+  --primary-foreground: var(--on-primary-container);
+  --secondary-foreground: var(--on-surface);
+  --muted: var(--surface-container-high);
+  --muted-foreground: var(--on-surface-variant);
+  --accent: var(--surface-bright);
+  --accent-foreground: var(--on-surface);
+  --destructive: var(--error);
+  --border: var(--outline-variant);
+  --input: var(--outline-variant);
+  --ring: var(--primary-container);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  /* Matches --radius-control so shadcn components' rounded-* utilities
+     (derived from this) align with the nav/buttons elsewhere on the site. */
+  --radius: 5px;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
 }
 
 @theme inline {
   --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-on-background: var(--on-background);
+
+  --color-surface: var(--surface);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container-lowest: var(--surface-container-lowest);
+  --color-surface-container-low: var(--surface-container-low);
+  --color-surface-container: var(--surface-container);
+  --color-surface-container-high: var(--surface-container-high);
+  --color-surface-container-highest: var(--surface-container-highest);
+  --color-surface-variant: var(--surface-variant);
+
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-variant: var(--on-surface-variant);
+  --color-on-surface-muted: var(--on-surface-muted);
+
+  --color-outline: var(--outline);
+  --color-outline-variant: var(--outline-variant);
+
+  --color-primary: var(--primary);
+  --color-on-primary: var(--on-primary);
+  --color-primary-container: var(--primary-container);
+  --color-on-primary-container: var(--on-primary-container);
+
+  --color-secondary: var(--secondary);
+  --color-on-secondary: var(--on-secondary);
+  --color-secondary-container: var(--secondary-container);
+  --color-on-secondary-container: var(--on-secondary-container);
+
+  --color-tertiary: var(--tertiary);
+  --color-on-tertiary: var(--on-tertiary);
+  --color-tertiary-container: var(--tertiary-container);
+  --color-on-tertiary-container: var(--on-tertiary-container);
+
+  --color-error: var(--error);
+  --color-on-error: var(--on-error);
+  --color-error-container: var(--error-container);
+  --color-on-error-container: var(--on-error-container);
+
+  --color-inverse-surface: var(--inverse-surface);
+  --color-inverse-on-surface: var(--inverse-on-surface);
+  --color-inverse-primary: var(--inverse-primary);
+
   --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Typography scale from DESIGN.md — used as `text-headline-xl`, etc.
+   Tailwind v4 pairs a --text-* size with its --text-*--line-height /
+   --letter-spacing / --font-weight companions automatically. */
+@theme {
+  /* Shared corner radius for the nav shell and solid buttons — deliberately
+     less rounded than Tailwind's `rounded-full` pill, per design feedback. */
+  --radius-control: 5px;
+
+  --text-headline-xl: 64px;
+  --text-headline-xl--line-height: 1.1;
+  --text-headline-xl--letter-spacing: -0.04em;
+  --text-headline-xl--font-weight: 800;
+
+  --text-headline-lg: 40px;
+  --text-headline-lg--line-height: 1.2;
+  --text-headline-lg--letter-spacing: -0.02em;
+  --text-headline-lg--font-weight: 700;
+
+  --text-headline-lg-mobile: 32px;
+  --text-headline-lg-mobile--line-height: 1.2;
+  --text-headline-lg-mobile--letter-spacing: -0.02em;
+  --text-headline-lg-mobile--font-weight: 700;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 1.3;
+  --text-headline-md--font-weight: 600;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--font-weight: 400;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.6;
+  --text-body-md--font-weight: 400;
+
+  --text-label-mono: 12px;
+  --text-label-mono--line-height: 1;
+  --text-label-mono--letter-spacing: 0.1em;
+  --text-label-mono--font-weight: 500;
+
+  --text-label-caps: 11px;
+  --text-label-caps--line-height: 1;
+  --text-label-caps--letter-spacing: 0.05em;
+  --text-label-caps--font-weight: 700;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Technical dot-grid backdrop, echoes the Stitch screen's canvas texture. */
+.bg-dot-grid {
+  background-image: radial-gradient(var(--dot-color) 1px, transparent 0);
+  background-size: 32px 32px;
+  background-position: -19px -19px;
+}
+
+/* Graph-paper hairline grid — same module size as .bg-dot-grid and the same
+   theme-aware tint, but full crossing lines instead of dots. Reserved for
+   the Hero so it reads as a distinct "blueprint" surface under the thesis
+   statement rather than competing with the dotted canvas everywhere else. */
+.bg-grid-lines {
+  background-image:
+    linear-gradient(90deg, var(--dot-color) 1px, transparent 1px),
+    linear-gradient(var(--dot-color) 1px, transparent 1px);
+  background-size: 60px 40px;
+}
+
+/* Randomized dot-noise texture (public/pattern-randomized.svg, user-supplied
+   — its own opaque white backing rect was stripped so it composites as a
+   transparent overlay). Tiled smaller than its native 2000×1500 so the grain
+   reads at a sensible density; opacity is set by the consumer, not baked in,
+   so it can be dialed to stay a faint texture rather than a graphic. */
+.bg-pattern-randomized {
+  background-image: url("/pattern-randomized.svg");
+  background-repeat: repeat;
+  background-size: 480px 360px;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--color-outline-variant);
+  border-color: color-mix(in oklab, var(--color-outline-variant) 40%, transparent);
+}
+
+.glow-hover {
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+.glow-hover:hover {
+  box-shadow: 0 0 20px 0 color-mix(in oklab, var(--color-primary-container) 25%, transparent);
+  border-color: var(--color-primary-container);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }
