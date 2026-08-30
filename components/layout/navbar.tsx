@@ -81,7 +81,7 @@ export function Navbar() {
               <Button
                 size="lg"
                 nativeButton={false}
-                className="mt-2 h-12 w-full rounded-control text-base"
+                className="mt-2 h-11 w-full rounded-control text-sm"
                 render={
                   <a href={links.cv} onClick={closeMenu}>
                     Télécharger CV

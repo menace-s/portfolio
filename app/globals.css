@@ -255,6 +255,17 @@ body {
   background-size: 60px 40px;
 }
 
+/* Randomized dot-noise texture (public/pattern-randomized.svg, user-supplied
+   — its own opaque white backing rect was stripped so it composites as a
+   transparent overlay). Tiled smaller than its native 2000×1500 so the grain
+   reads at a sensible density; opacity is set by the consumer, not baked in,
+   so it can be dialed to stay a faint texture rather than a graphic. */
+.bg-pattern-randomized {
+  background-image: url("/pattern-randomized.svg");
+  background-repeat: repeat;
+  background-size: 480px 360px;
+}
+
 .glass-panel {
   background: var(--glass-bg);
   backdrop-filter: blur(var(--glass-blur));
