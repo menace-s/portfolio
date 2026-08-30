@@ -1,8 +1,8 @@
-import { TerminalSquare } from "lucide-react";
+import Image from "next/image";
 import { Button } from "../ui/button";
 import { Container } from "../layout/container";
 import { BackgroundBeams } from "../ui/background-beams";
-import { hero, links } from "@/lib/site-config";
+import { hero, siteConfig } from "@/lib/site-config";
 
 export function Hero() {
   return (
@@ -37,7 +37,7 @@ export function Hero() {
             />
           </div>
 
-          <div className="flex gap-6 pt-8 text-label-mono text-on-surface-variant">
+          {/* <div className="flex gap-6 pt-8 text-label-mono text-on-surface-variant">
             <a href={links.github} className="transition-colors hover:text-primary-container">
               GITHUB
             </a>
@@ -47,15 +47,26 @@ export function Hero() {
             <a href={links.email} className="transition-colors hover:text-primary-container">
               EMAIL
             </a>
-          </div>
+          </div> */}
         </div>
 
-        <div className="relative hidden aspect-square w-full max-w-125 flex-1 md:block">
-          <div className="absolute inset-0 rounded-full bg-linear-to-br from-primary-container/10 to-transparent blur-3xl" />
-          <div className="h-full w-full animate-[spin_60s_linear_infinite] rounded-full border border-dashed border-outline-variant/40" />
-          <div className="absolute inset-8 animate-[spin_40s_linear_infinite_reverse] rounded-full border border-primary-container/30" />
-          <div className="absolute inset-0 flex items-center justify-center">
-            <TerminalSquare className="h-28 w-28 text-primary-container/50" strokeWidth={1} />
+        <div className="flex w-full max-w-100 flex-1 justify-center md:justify-end">
+          {/* Polaroid frame: white card border (thick at the bottom, like a
+              real Polaroid's caption strip), slight permanent tilt, a "tape"
+              accent pinning the top-right corner. Static — no hover effect,
+              b/w on every breakpoint. */}
+          <div className="relative w-full max-w-sm rotate-8 rounded-sm bg-surface-container-lowest p-3 pb-10 shadow-xl">
+            <div className="absolute -top-3 right-6 h-5 w-16 rotate-6 rounded-xs bg-surface-container-high/80 shadow-sm" />
+            <div className="relative aspect-4/5 w-full overflow-hidden">
+              <Image
+                src="/philippe-aganh-hero.jpg"
+                alt={siteConfig.name}
+                fill
+                sizes="(min-width: 768px) 384px, 100vw"
+                priority
+                className="object-cover grayscale"
+              />
+            </div>
           </div>
         </div>
       </Container>
