@@ -6,15 +6,12 @@ import { hero, links } from "@/lib/site-config";
 
 export function Hero() {
   return (
-    <section className="relative flex flex-col items-center gap-12 overflow-hidden bg-background py-12 md:flex-row md:py-24">
+    // Toned a shade darker than the page background (not pure white/cream)
+    // so the beams' thin colored strokes have something to contrast against.
+    <section className="relative flex flex-col items-center gap-12 overflow-hidden bg-surface-container-high pt-40 pb-12 md:flex-row md:pt-48 md:pb-24">
       <BackgroundBeams />
       <Container className="relative flex flex-col items-center gap-12 md:flex-row">
         <div className="z-10 flex-1 space-y-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-outline-variant/50 px-5 py-2 text-label-mono text-primary-container">
-            <span className="h-2 w-2 animate-pulse rounded-full bg-primary-container" />
-            {hero.badge}
-          </div>
-
           <h1 className="text-headline-lg-mobile text-on-surface md:text-headline-xl">
             {hero.title}
           </h1>

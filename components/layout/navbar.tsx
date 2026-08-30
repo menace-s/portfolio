@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "../ui/button";
-import { ThemeToggle } from "../theme/theme-toggle";
 import { links, navItems, siteConfig } from "@/lib/site-config";
 
 export function Navbar() {
@@ -50,7 +49,6 @@ export function Navbar() {
             </div>
 
             <div className="flex items-center gap-3">
-              <ThemeToggle />
               <Button
                 nativeButton={false}
                 className="hidden rounded-control md:flex"
