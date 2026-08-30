@@ -8,9 +8,10 @@ export function Timeline() {
       className="scroll-mt-24 border-t border-outline-variant/30 py-24 md:py-32 md:scroll-mt-28"
     >
       <Container>
-        <div className="mb-16 text-center">
-          <h2 className="text-headline-lg-mobile text-on-surface md:text-headline-lg">
-            Parcours
+        <div className="mb-16 flex items-center gap-3">
+          <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
+          <h2 className="font-heading-rounded text-headline-md font-bold text-on-surface md:text-headline-lg-mobile">
+            À propos
           </h2>
         </div>
 

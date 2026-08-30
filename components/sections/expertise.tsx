@@ -16,11 +16,12 @@ export function Expertise() {
       className="scroll-mt-24 border-t border-outline-variant/30 py-24 md:py-32 md:scroll-mt-28"
     >
       <Container>
-        <h2 className="mb-16 text-headline-lg-mobile text-on-surface md:text-headline-lg">
-          Ce que je construis
-          <br />
-          <span className="text-primary-container">et automatise</span>
-        </h2>
+        <div className="mb-16 flex items-center gap-3">
+          <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
+          <h2 className="font-heading-rounded text-headline-md font-bold text-on-surface md:text-headline-lg-mobile">
+            Stack technique
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
           {expertiseAreas.map((area) => {

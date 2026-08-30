@@ -43,9 +43,12 @@ export function Projects() {
           <p className="mb-4 text-label-mono uppercase text-primary-container">
             Des problèmes réels. Des solutions logicielles.
           </p>
-          <h2 className="text-headline-lg-mobile text-on-surface md:text-headline-lg">
-            Projets Récents
-          </h2>
+          <div className="flex items-center gap-3">
+            <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
+            <h2 className="font-heading-rounded text-headline-md font-bold text-on-surface md:text-headline-lg-mobile">
+              Projets Récents
+            </h2>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
