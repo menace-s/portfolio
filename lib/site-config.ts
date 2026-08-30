@@ -125,16 +125,20 @@ export const projects: Project[] = [
   },
 ];
 
-export type TimelineItem = {
-  year: string;
-  title: string;
-  place: string;
+export const about = {
+  highlight: "Master 2 en Génie Logiciel",
+  paragraphs: [
+    "Titulaire d’un Master 2 en Génie Logiciel, je suis passionné par la création de solutions numériques.",
+    "Au fil de mon parcours, j’ai développé des compétences en développement web, tout en explorant le développement mobile, les tests automatisés et la RPA. J’ai eu l’occasion de travailler sur différents projets, qui m’ont permis de développer ma capacité à comprendre les besoins et à rechercher des solutions pertinentes.",
+  ],
 };
 
-export const timeline: TimelineItem[] = [
-  { year: "2026", title: "Master Ingénierie Logicielle", place: "ESATIC" },
-  { year: "2024", title: "Licence Informatique", place: "ESATIC" },
-  { year: "2021", title: "Baccalauréat", place: "Lycée Classique" },
+export const skills = [
+  "Développement d'application Web",
+  "Test automatisé",
+  "Développement d'application Mobile",
+  "RPA (Robotic Process Automation)",
+  "DevOps et CI/CD"
 ];
 
 export const process = [
