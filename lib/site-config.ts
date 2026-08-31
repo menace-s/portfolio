@@ -19,9 +19,7 @@ export const siteConfig = {
 export const links = {
   github: "https://github.com/menace-s",
   linkedin: "https://www.linkedin.com/in/philippe-aganh-a58a83279/",
-  twitter: "#",
-  email: "#",
-  cv: "#",
+  email: "mailto:akolajeanphilippe@gmail.com",
 };
 
 export const navItems = [
@@ -189,7 +187,7 @@ export const projects: Project[] = [
 export const about = {
   highlight: "Master 2 en Génie Logiciel",
   paragraphs: [
-    "Titulaire d’un Master 2 en Génie Logiciel, je suis passionné par la création de solutions numériques.",
+    "Titulaire d’un Master 2 en Génie Logiciel de l'ESATIC, je suis passionné par la création de solutions numériques.",
     "Au fil de mon parcours, j’ai développé des compétences en développement web, tout en explorant le développement mobile, les tests automatisés et la RPA. J’ai eu l’occasion de travailler sur différents projets, qui m’ont permis de développer ma capacité à comprendre les besoins et à rechercher des solutions pertinentes.",
   ],
 };
@@ -208,6 +206,6 @@ export const footer = {
   socials: [
     { label: "LinkedIn", href: links.linkedin },
     { label: "GitHub", href: links.github },
-    { label: "Twitter", href: links.twitter },
+    { label: "Email", href: links.email },
   ],
 };

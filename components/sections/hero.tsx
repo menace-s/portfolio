@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Container } from "../layout/container";
+import { FadeIn } from "../ui/fade-in";
 import { hero, siteConfig } from "@/lib/site-config";
 
 export function Hero() {
@@ -9,7 +10,7 @@ export function Hero() {
       <div className="bg-pattern-randomized pointer-events-none absolute inset-0 opacity-25" aria-hidden="true" />
       <Container className="relative flex flex-col items-center gap-12 md:flex-row">
         <div className="z-10 flex-1 space-y-8">
-          <div className="space-y-2">
+          <FadeIn className="space-y-2">
             <p className="text-label-mono text-on-surface-variant">
               {hero.greeting}
             </p>
@@ -21,23 +22,28 @@ export function Hero() {
                 {hero.role}
               </span>
             </h1>
-          </div>
+          </FadeIn>
 
-          <p className="max-w-2xl text-label-mono text-on-surface-variant">
-            {hero.subtitle}
-          </p>
+          <FadeIn delay={0.1}>
+            <p className="max-w-2xl text-label-mono text-on-surface-variant">
+              {hero.subtitle}
+            </p>
+          </FadeIn>
 
-          <div className="flex flex-col gap-4 pt-4 sm:flex-row">
+          <FadeIn delay={0.2} className="flex flex-col gap-4 pt-4 sm:flex-row">
             <Button
               size="lg"
               nativeButton={false}
               className="h-11 rounded-control px-6 text-sm"
               render={<a href={hero.primaryCta.href}>{hero.primaryCta.label}</a>}
             />
-          </div>
+          </FadeIn>
         </div>
 
-        <div className="flex w-full max-w-100 flex-1 justify-center md:justify-end">
+        <FadeIn
+          delay={0.3}
+          className="flex w-full max-w-100 flex-1 justify-center md:justify-end"
+        >
           {/* Polaroid frame: white card border (thick at the bottom, like a
               real Polaroid's caption strip), slight permanent tilt, a "tape"
               accent pinning the top-right corner. Static — no hover effect,
@@ -55,7 +61,7 @@ export function Hero() {
               />
             </div>
           </div>
-        </div>
+        </FadeIn>
       </Container>
     </section>
   );
