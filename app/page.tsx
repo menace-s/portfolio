@@ -1,10 +1,9 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Hero } from "@/components/sections/hero";
-import { Expertise } from "@/components/sections/expertise";
+import { Stack } from "@/components/sections/stack";
 import { Projects } from "@/components/sections/projects";
-import { Timeline } from "@/components/sections/timeline";
-import { Process } from "@/components/sections/process";
+import { About } from "@/components/sections/about";
 
 export default function Home() {
   return (
@@ -12,10 +11,9 @@ export default function Home() {
       <Navbar />
       <main className="flex-grow pb-32">
         <Hero />
-        <Expertise />
+        <About />
         <Projects />
-        <Timeline />
-        <Process />
+        <Stack />
       </main>
       <Footer />
     </>

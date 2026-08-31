@@ -17,58 +17,119 @@ export const siteConfig = {
 
 // TODO: remplacer par les vraies URLs / le vrai CV dès qu'ils sont disponibles.
 export const links = {
-  github: "#",
-  linkedin: "#",
+  github: "https://github.com/menace-s",
+  linkedin: "https://www.linkedin.com/in/philippe-aganh-a58a83279/",
   twitter: "#",
   email: "#",
   cv: "#",
 };
 
 export const navItems = [
-  { label: "Expertise", href: "#expertise" },
+  { label: "À propos", href: "#parcours" },
   { label: "Projets", href: "#projets" },
-  { label: "Parcours", href: "#parcours" },
-  { label: "Contact", href: "#contact" },
+  { label: "Stack technique", href: "#expertise" },
 ] as const;
 
 export const hero = {
-  title: "Je construis des applications web et j’automatise leur qualité.",
+  greeting: "Salut, je suis",
+  role: siteConfig.role,
   subtitle: "Développement Web · Test Automatisé · RPA · DevOps",
   primaryCta: { label: "Voir mes projets", href: "#projets" },
-  secondaryCta: { label: "Me contacter", href: "#contact" },
 };
 
-export type ExpertiseArea = {
+export type TechItem = {
+  name: string;
+  description: string;
+  /** Key into the icon map in components/sections/stack.tsx */
+  icon: string;
+};
+
+export type TechCategory = {
   id: string;
-  title: string;
-  icon: "web" | "test" | "rpa" | "devops";
-  tags: string[];
+  label: string;
+  items: TechItem[];
 };
 
-export const expertiseAreas: ExpertiseArea[] = [
+export const techStack: TechCategory[] = [
   {
-    id: "web",
-    title: "Web",
-    icon: "web",
-    tags: ["Angular", "Next.js", "Laravel", "Spring Boot"],
+    id: "frontend",
+    label: "Frontend",
+    items: [
+      {
+        name: "Angular",
+        description: "Framework TypeScript pour applications web robustes et structurées",
+        icon: "angular",
+      },
+      {
+        name: "Next.js",
+        description: "Framework React pour applications web rapides et full-stack",
+        icon: "nextjs",
+      },
+    ],
   },
   {
-    id: "test",
-    title: "Test",
-    icon: "test",
-    tags: ["Playwright", "Appium", "WebdriverIO"],
+    id: "backend",
+    label: "Backend",
+    items: [
+      {
+        name: "Laravel",
+        description: "Framework PHP élégant pour développement web rapide",
+        icon: "laravel",
+      },
+      {
+        name: "Spring Boot",
+        description: "Framework Java pour microservices et applications d'entreprise",
+        icon: "springboot",
+      },
+    ],
+  },
+  {
+    id: "test-auto",
+    label: "Test Auto",
+    items: [
+      {
+        name: "Playwright",
+        description: "Framework de test end-to-end moderne pour applications web",
+        icon: "playwright",
+      },
+      {
+        name: "Appium",
+        description: "Automatisation de tests pour applications mobiles natives et hybrides",
+        icon: "appium",
+      },
+      {
+        name: "WebdriverIO",
+        description: "Framework de test JavaScript pour automatisation web et mobile",
+        icon: "webdriverio",
+      },
+    ],
   },
   {
     id: "rpa",
-    title: "RPA",
-    icon: "rpa",
-    tags: ["UiPath"],
+    label: "RPA",
+    items: [
+      {
+        name: "UiPath",
+        description: "Plateforme RPA pour automatiser les processus métier répétitifs",
+        icon: "uipath",
+      },
+    ],
   },
   {
     id: "devops",
-    title: "Qualité / DevOps",
-    icon: "devops",
-    tags: ["Jenkins", "CI/CD"],
+    label: "DevOps",
+    items: [
+      {
+        name: "Jenkins",
+        description: "Serveur d'intégration continue pour automatiser builds et déploiements",
+        icon: "jenkins",
+      },
+      {
+        name: "GitHub",
+        description: "Hébergement Git et collaboration pour le versioning du code",
+        icon: "github",
+      },
+    ],
   },
 ];
 
@@ -125,30 +186,25 @@ export const projects: Project[] = [
   },
 ];
 
-export type TimelineItem = {
-  year: string;
-  title: string;
-  place: string;
+export const about = {
+  highlight: "Master 2 en Génie Logiciel",
+  paragraphs: [
+    "Titulaire d’un Master 2 en Génie Logiciel, je suis passionné par la création de solutions numériques.",
+    "Au fil de mon parcours, j’ai développé des compétences en développement web, tout en explorant le développement mobile, les tests automatisés et la RPA. J’ai eu l’occasion de travailler sur différents projets, qui m’ont permis de développer ma capacité à comprendre les besoins et à rechercher des solutions pertinentes.",
+  ],
 };
 
-export const timeline: TimelineItem[] = [
-  { year: "2026", title: "Master Ingénierie Logicielle", place: "ESATIC" },
-  { year: "2024", title: "Licence Informatique", place: "ESATIC" },
-  { year: "2021", title: "Baccalauréat", place: "Lycée Classique" },
+export const skills = [
+  "Développement d'application Web",
+  "Test automatisé",
+  "Développement d'application Mobile",
+  "RPA (Robotic Process Automation)",
+  "DevOps et CI/CD"
 ];
-
-export const process = [
-  "Comprendre",
-  "Concevoir",
-  "Développer",
-  "Tester",
-  "Automatiser",
-  "Améliorer",
-] as const;
 
 export const footer = {
   prompt: "Un projet, une idée ou une opportunité ?",
-  copyright: `© ${new Date().getFullYear()} ${siteConfig.name} — Invisible Expert. Built with precision.`,
+  copyright: `© ${new Date().getFullYear()} ${siteConfig.name} - Tous droits réservés.`,
   socials: [
     { label: "LinkedIn", href: links.linkedin },
     { label: "GitHub", href: links.github },
