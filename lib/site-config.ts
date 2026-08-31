@@ -15,11 +15,14 @@ export const siteConfig = {
     "Portfolio de Philippe Aganh, ingénieur logiciel — développement web, test automatisé, RPA et DevOps.",
 };
 
-// TODO: remplacer par les vraies URLs / le vrai CV dès qu'ils sont disponibles.
 export const links = {
   github: "https://github.com/menace-s",
   linkedin: "https://www.linkedin.com/in/philippe-aganh-a58a83279/",
   email: "mailto:akolajeanphilippe@gmail.com",
+  // Drop the actual file at public/cv-philippe-aganh.pdf — Next.js serves
+  // everything under public/ from the site root, so this path just works
+  // once it's there.
+  cv: "/cv-philippe-aganh.pdf",
 };
 
 export const navItems = [

@@ -52,7 +52,11 @@ export function Navbar() {
               <Button
                 nativeButton={false}
                 className="hidden rounded-control md:flex"
-                render={<a href={links.cv}>Télécharger CV</a>}
+                render={
+                  <a href={links.cv} download>
+                    Télécharger CV
+                  </a>
+                }
               />
               <button
                 type="button"
@@ -83,7 +87,7 @@ export function Navbar() {
                 nativeButton={false}
                 className="mt-2 h-11 w-full rounded-control text-sm"
                 render={
-                  <a href={links.cv} onClick={closeMenu}>
+                  <a href={links.cv} download onClick={closeMenu}>
                     Télécharger CV
                   </a>
                 }
