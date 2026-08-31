@@ -10,8 +10,6 @@ const geistSans = Geist({
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
@@ -35,14 +33,9 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: siteConfig.title,
   description: siteConfig.description,
-<<<<<<< HEAD
-  title: siteConfig.title,
-  description: siteConfig.description,
-=======
   icons: {
     icon: "/JP.png",
   },
->>>>>>> 479e08b (feat: update layout and sections with new scroll behavior; add new icon and image)
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
