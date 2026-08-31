@@ -43,8 +43,6 @@ export function Projects() {
         <FadeIn className="mb-16">
           <div className="flex items-center gap-3">
             <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
-            <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
-            <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
             <h2 className="font-heading-rounded text-headline-md font-bold text-on-surface md:text-headline-lg-mobile">
               Projets Récents
             </h2>
