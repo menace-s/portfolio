@@ -7,6 +7,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Container } from "../layout/container";
+import { FadeIn } from "../ui/fade-in";
 import { projects, type Project } from "@/lib/site-config";
 
 const ICONS: Record<Project["icon"], LucideIcon> = {
@@ -39,50 +40,48 @@ export function Projects() {
       className="scroll-mt-24 border-t border-outline-variant/30 bg-[#F9FAFB] py-16 md:py-20 md:scroll-mt-28"
     >
       <Container>
-        <div className="mb-16">
-          <p className="mb-4 text-label-mono uppercase text-primary-container">
-            Des problèmes réels. Des solutions logicielles.
-          </p>
+        <FadeIn className="mb-16">
           <div className="flex items-center gap-3">
+            <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
+            <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
             <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
             <h2 className="font-heading-rounded text-headline-md font-bold text-on-surface md:text-headline-lg-mobile">
               Projets Récents
             </h2>
           </div>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <article
-              key={project.id}
-              className="glass-panel group overflow-hidden rounded-2xl border-outline-variant/40 bg-surface-container"
-            >
-              <ProjectVisual icon={project.icon} number={project.number} />
-              <div className="p-8">
-                <h3 className="mb-2 text-2xl font-bold text-on-surface">
-                  {project.title}
-                </h3>
-                <p className="mb-6 h-20 overflow-hidden text-on-surface-variant">
-                  {project.description}
-                </p>
-                <div className="mb-8 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded-full border border-outline-variant/50 bg-surface-bright px-3 py-1 text-xs text-on-surface-variant"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+          {projects.map((project, index) => (
+            <FadeIn key={project.id} delay={index * 0.1}>
+              <article className="glass-panel group overflow-hidden rounded-2xl border-outline-variant/40 bg-surface-container">
+                <ProjectVisual icon={project.icon} number={project.number} />
+                <div className="p-8">
+                  <h3 className="mb-2 text-2xl font-bold text-on-surface">
+                    {project.title}
+                  </h3>
+                  <p className="mb-6 h-20 overflow-hidden text-on-surface-variant">
+                    {project.description}
+                  </p>
+                  <div className="mb-8 flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-outline-variant/50 bg-surface-bright px-3 py-1 text-xs text-on-surface-variant"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href={project.href}
+                    className="inline-flex items-center gap-2 font-bold text-primary-container transition-all hover:gap-4"
+                  >
+                    Voir le projet <ArrowRight className="h-4 w-4" />
+                  </a>
                 </div>
-                <a
-                  href={project.href}
-                  className="inline-flex items-center gap-2 font-bold text-primary-container transition-all hover:gap-4"
-                >
-                  Voir le projet <ArrowRight className="h-4 w-4" />
-                </a>
-              </div>
-            </article>
+              </article>
+            </FadeIn>
           ))}
         </div>
       </Container>

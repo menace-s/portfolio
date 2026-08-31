@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { siAppium, siUipath, siWebdriverio } from "simple-icons";
 import { Container } from "../layout/container";
+import { FadeIn } from "../ui/fade-in";
 import { techStack } from "@/lib/site-config";
 
 const DEVICON_BASE = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
@@ -65,14 +66,16 @@ export function Stack() {
       className="scroll-mt-24 border-t border-outline-variant/30 bg-[#F9FAFB] py-16 md:py-20 md:scroll-mt-28"
     >
       <Container>
-        <div className="mb-12 flex items-center gap-3">
+        <FadeIn className="mb-12 flex items-center gap-3">
+          <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
+          <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
           <span aria-hidden="true" className="h-2.5 w-2.5 shrink-0 bg-indigo-800" />
           <h2 className="font-heading-rounded text-headline-md font-bold text-on-surface md:text-headline-lg-mobile">
             Stack technique
           </h2>
-        </div>
+        </FadeIn>
 
-        <div className="mb-12 flex items-center gap-2 border-b border-outline-variant/30">
+        <FadeIn delay={0.1} className="mb-12 flex items-center gap-2 border-b border-outline-variant/30">
           <button
             type="button"
             aria-label="Catégories précédentes"
@@ -110,17 +113,19 @@ export function Stack() {
           >
             <ChevronRight className="h-4 w-4" />
           </button>
-        </div>
+        </FadeIn>
 
         <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 md:grid-cols-4">
-          {activeCategory.items.map((item) => (
-            <div key={item.name} className="flex flex-col items-center text-center">
-              <TechLogo icon={item.icon} />
-              <h3 className="mt-4 text-base font-bold text-on-surface">{item.name}</h3>
-              <p className="mt-2 max-w-50 text-sm text-on-surface-variant">
-                {item.description}
-              </p>
-            </div>
+          {activeCategory.items.map((item, index) => (
+            <FadeIn key={item.name} delay={0.15 + index * 0.08}>
+              <div className="flex flex-col items-center text-center">
+                <TechLogo icon={item.icon} />
+                <h3 className="mt-4 text-base font-bold text-on-surface">{item.name}</h3>
+                <p className="mt-2 max-w-50 text-sm text-on-surface-variant">
+                  {item.description}
+                </p>
+              </div>
+            </FadeIn>
           ))}
         </div>
       </Container>
