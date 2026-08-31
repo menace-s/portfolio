@@ -1,6 +1,6 @@
-import Image from "next/image";
 import { Container } from "../layout/container";
-import { about, siteConfig, skills } from "@/lib/site-config";
+import { TracingBeam } from "../ui/tracing-beam";
+import { about, skills } from "@/lib/site-config";
 
 export function About() {
   const [firstParagraph, ...restParagraphs] = about.paragraphs;
@@ -19,7 +19,7 @@ export function About() {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between md:gap-16">
+        <TracingBeam className="pl-6 md:pl-10">
           <div className="max-w-2xl space-y-6 text-body-lg text-on-surface-variant">
             <p>
               {before}
@@ -30,21 +30,21 @@ export function About() {
               <p key={paragraph}>{paragraph}</p>
             ))}
           </div>
-        </div>
 
-        <div className="mt-16 max-w-2xl">
-          <h3 className="mb-6 text-xl font-bold text-on-surface">Compétences</h3>
-          <div className="flex flex-wrap gap-3">
-            {skills.map((skill) => (
-              <span
-                key={skill}
-                className="border rounded-md border-indigo-100 bg-indigo-50 px-5 py-3 text-sm text-on-surface"
-              >
-                {skill}
-              </span>
-            ))}
+          <div className="mt-16 max-w-2xl">
+            <h3 className="mb-6 text-xl font-bold text-on-surface">Compétences</h3>
+            <div className="flex flex-wrap gap-3">
+              {skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-md border border-indigo-100 bg-indigo-50 px-5 py-3 text-sm text-on-surface"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
+        </TracingBeam>
       </Container>
     </section>
   );
