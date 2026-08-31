@@ -34,13 +34,6 @@ export function Hero() {
               className="h-11 rounded-control px-6 text-sm"
               render={<a href={hero.primaryCta.href}>{hero.primaryCta.label}</a>}
             />
-            <Button
-              variant="outline"
-              size="lg"
-              nativeButton={false}
-              className="h-11 rounded-control border-outline-variant/50 bg-transparent px-6 text-sm text-on-surface"
-              render={<a href={hero.secondaryCta.href}>{hero.secondaryCta.label}</a>}
-            />
           </div>
         </div>
 

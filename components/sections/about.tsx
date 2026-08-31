@@ -1,5 +1,6 @@
+import Image from "next/image";
 import { Container } from "../layout/container";
-import { about, skills } from "@/lib/site-config";
+import { about, siteConfig, skills } from "@/lib/site-config";
 
 export function About() {
   const [firstParagraph, ...restParagraphs] = about.paragraphs;
@@ -8,7 +9,7 @@ export function About() {
   return (
     <section
       id="parcours"
-      className="scroll-mt-24 border-t border-outline-variant/30 bg-[#F9FAFB] py-24 md:py-32 md:scroll-mt-28"
+      className="scroll-mt-24 border-t border-outline-variant/30 bg-[#F9FAFB] py-16 md:py-20 md:scroll-mt-28"
     >
       <Container>
         <div className="mb-12 flex items-center gap-3">
@@ -18,15 +19,17 @@ export function About() {
           </h2>
         </div>
 
-        <div className="max-w-2xl space-y-6 text-body-lg text-on-surface-variant">
-          <p>
-            {before}
-            <strong className="font-bold text-on-surface">{about.highlight}</strong>
-            {after}
-          </p>
-          {restParagraphs.map((paragraph) => (
-            <p key={paragraph}>{paragraph}</p>
-          ))}
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between md:gap-16">
+          <div className="max-w-2xl space-y-6 text-body-lg text-on-surface-variant">
+            <p>
+              {before}
+              <strong className="font-bold text-on-surface">{about.highlight}</strong>
+              {after}
+            </p>
+            {restParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
         </div>
 
         <div className="mt-16 max-w-2xl">
