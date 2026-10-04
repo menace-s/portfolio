@@ -11,7 +11,7 @@ function ServiceVisual({ image, title, number }: Pick<Service, "image" | "title"
         alt={title}
         fill
         sizes="(min-width: 768px) 50vw, 100vw"
-        className="object-cover grayscale transition duration-500 group-hover:scale-105 group-hover:grayscale-0"
+        className="object-cover transition duration-500 group-hover:scale-105 [@media(hover:hover)]:grayscale [@media(hover:hover)]:group-hover:grayscale-0"
       />
       <div className="absolute inset-0 z-10 bg-linear-to-t from-surface-container to-transparent" />
       <div className="absolute right-4 top-4 z-20 rounded-full border border-primary-container/50 bg-surface/80 px-3 py-1 text-label-mono text-primary-container backdrop-blur-md">
