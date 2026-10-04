@@ -4,7 +4,7 @@
 
 /*
   Design tokens — sober/professional palette: warm off-white neutrals
-  (close to Tailwind's "stone" scale) with a navy-blue accent, replacing
+  (close to Tailwind's "stone" scale) with a near-black accent, replacing
   the earlier high-contrast yellow scheme. Light only — no dark mode.
 */
 :root {
@@ -71,7 +71,7 @@
   --card-foreground: var(--on-surface);
   --popover: var(--surface-container);
   --popover-foreground: var(--on-surface);
-  /* Button "default" variant = our brand navy, not shadcn's near-black. */
+  /* Button "default" variant = our near-black brand accent (--primary-container). */
   --primary-foreground: var(--on-primary-container);
   --secondary-foreground: var(--on-surface);
   --muted: var(--surface-container-high);

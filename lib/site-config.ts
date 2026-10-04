@@ -27,7 +27,7 @@ export const links = {
 
 export const navItems = [
   { label: "À propos", href: "#parcours" },
-  { label: "Projets", href: "#projets" },
+  { label: "Savoir-faire", href: "#savoir-faire" },
   { label: "Stack technique", href: "#expertise" },
 ] as const;
 
@@ -35,7 +35,7 @@ export const hero = {
   greeting: "Salut, je suis",
   role: siteConfig.role,
   subtitle: "Développement Web · Test Automatisé · RPA · DevOps",
-  primaryCta: { label: "Voir mes projets", href: "#projets" },
+  primaryCta: { label: "Voir mon savoir-faire", href: "#savoir-faire" },
 };
 
 export type TechItem = {
@@ -134,56 +134,52 @@ export const techStack: TechCategory[] = [
   },
 ];
 
-export type Project = {
+export type Service = {
   id: string;
   number: string;
   title: string;
   description: string;
   tags: string[];
-  icon: "stock" | "auction" | "mobile" | "hackathon";
-  href: string;
+  /** Photo under public/savoir-faire/ (Unsplash) */
+  image: string;
 };
 
-export const projects: Project[] = [
+export const services: Service[] = [
   {
-    id: "gestion-stock",
+    id: "test-auto",
     number: "01",
-    title: "Gestion de stock",
+    title: "Test automatisé",
     description:
-      "Système complet de suivi d'inventaire avec alertes en temps réel et reporting automatisé pour optimiser la chaîne d'approvisionnement.",
-    tags: ["Laravel", "MySQL"],
-    icon: "stock",
-    href: "#",
+      "Tests end-to-end web et mobile pour fiabiliser chaque livraison et détecter les régressions au plus tôt.",
+    tags: ["Playwright", "Appium", "WebdriverIO"],
+    image: "/savoir-faire/test-auto.jpg",
   },
   {
-    id: "systeme-encheres",
+    id: "ci-cd",
     number: "02",
-    title: "Système d’enchères",
+    title: "Intégration continue",
     description:
-      "Plateforme d'enchères en direct robuste gérant de fortes concurrences avec websockets pour des mises à jour instantanées.",
-    tags: ["Laravel", "MySQL"],
-    icon: "auction",
-    href: "#",
+      "Pipelines CI/CD qui automatisent builds, tests et déploiements à chaque modification du code.",
+    tags: ["Jenkins", "GitHub"],
+    image: "/savoir-faire/ci-cd.jpg",
   },
   {
-    id: "automatisation-android",
+    id: "rpa",
     number: "03",
-    title: "Automatisation Android",
+    title: "RPA",
     description:
-      "Suite de tests E2E automatisés pour applications mobiles assurant une couverture exhaustive et une intégration continue fluide.",
-    tags: ["Appium", "WebdriverIO", "TS"],
-    icon: "mobile",
-    href: "#",
+      "Robots logiciels qui prennent en charge les tâches répétitives des processus métier.",
+    tags: ["UiPath Studio"],
+    image: "/savoir-faire/rpa.jpg",
   },
   {
-    id: "hackathon-2025",
+    id: "dev-web",
     number: "04",
-    title: "Hackathon 2025",
+    title: "Développement web",
     description:
-      "Solution logicielle axée sur la prédiction et la prévention des risques utilisant des modèles d'analyse de données avancés.",
-    tags: ["Prediction", "Prevention"],
-    icon: "hackathon",
-    href: "#",
+      "Applications web complètes, de l'interface au back-end, pensées pour être robustes et maintenables.",
+    tags: ["Laravel", "Angular", "Next.js", "Spring Boot"],
+    image: "/savoir-faire/dev-web.jpg",
   },
 ];
 
